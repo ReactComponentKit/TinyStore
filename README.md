@@ -1,2 +1,3 @@
-# Tiny
+# TinyStore
+
 tiny state
