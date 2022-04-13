@@ -1,0 +1,1 @@
+xcodebuild -scheme TinyStore-Package test -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 13'
