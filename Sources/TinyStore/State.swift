@@ -13,8 +13,8 @@ import Foundation
 extension Tiny {
     public class State<Value: Equatable>: ObservableObject {
         @Published
-        /// not prevent direct set value
-        /// but must set value on main thread
+        /// do not prevent setting value directly
+        /// but must set value on the main thread.
         // private(set) var value: Value
         public var value: Value
         
@@ -33,7 +33,7 @@ extension Tiny {
         }
         
         /// set state value on the other thread.
-        /// Do Not Use in the effect that watches this state.
+        /// Do Not Use in the Effect that watches this state.
         public func commit(_ mutation: (inout Value) -> Void) {
             let old = self.value
             var mutable = self.value
