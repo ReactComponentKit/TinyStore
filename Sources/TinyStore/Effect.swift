@@ -63,7 +63,7 @@ extension Tiny {
             }
         }
         
-        internal func run() {
+        public func run() {
             Task.detached(priority: .userInitiated) {
                 let old = self.value
                 let new = await self.job(self)

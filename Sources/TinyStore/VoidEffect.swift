@@ -33,7 +33,7 @@ extension Tiny {
             return state
         }
         
-        internal func run() {
+        public func run() {
             Task.detached(priority: .userInitiated) {
                 await self.job(self)
             }
