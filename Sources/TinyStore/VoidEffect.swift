@@ -14,10 +14,19 @@ extension Tiny {
         internal var cancellable = Set<AnyCancellable>()
         internal let name: AnyHashable
         internal let job: (VoidEffect) async -> Void
+        private var cacheDidInitialRun = false
+        internal var didInitialRun = false {
+            didSet {
+                guard didInitialRun == true else { return }
+                guard cacheDidInitialRun == false else { return }
+                cacheDidInitialRun = true
+                run()
+            }
+        }
+        
         internal init(name: AnyHashable, job: @escaping (VoidEffect) async -> Void) {
             self.name = name
             self.job = job
-            self.run()
         }
         
         public func watch<Value: Equatable>(state name: AnyHashable) -> Tiny.State<Value> {

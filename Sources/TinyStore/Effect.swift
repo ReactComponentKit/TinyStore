@@ -21,6 +21,16 @@ extension Tiny {
         internal var cancellables = Set<AnyCancellable>()
         internal let name: AnyHashable
         internal let job: (Effect) async -> Value
+        private var cacheDidInitialRun = false
+        internal var didInitialRun = false {
+            didSet {
+                guard didInitialRun == true else { return }
+                guard cacheDidInitialRun == false else { return }
+                cacheDidInitialRun = true
+                run()
+            }
+        }
+        
         internal init(name: AnyHashable, initialValue: Value, job: @escaping (Effect) async -> Value) {
             self.name = name
             self.innerValue = initialValue
@@ -39,8 +49,6 @@ extension Tiny {
                     })
                     .store(in: &cancellables)
             }
-            
-            self.run()
         }
         
         public func watch<Value: Equatable>(state name: AnyHashable) -> State<Value> {
