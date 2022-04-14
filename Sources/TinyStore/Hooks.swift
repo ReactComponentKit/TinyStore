@@ -8,6 +8,7 @@
 import Foundation
 
 /// define state value
+@discardableResult
 public func state<Value: Equatable>(name: Tiny.StateName, initialValue: Value) -> Tiny.State<Value> {
     let state = Tiny.State(name: name, initialValue: initialValue)
     Tiny.globalStore.states[name] = state
@@ -15,6 +16,7 @@ public func state<Value: Equatable>(name: Tiny.StateName, initialValue: Value) -
 }
 
 /// define effect that has return value
+@discardableResult
 public func effect<Value: Equatable>(name: Tiny.EffectName, initialValue: Value, job: @escaping (Tiny.Effect<Value>) async -> Value) -> Tiny.Effect<Value> {
     let e = Tiny.Effect(name: name, initialValue: initialValue, job: job)
     Tiny.globalStore.effects[name] = e
@@ -22,6 +24,7 @@ public func effect<Value: Equatable>(name: Tiny.EffectName, initialValue: Value,
 }
 
 /// define effect that has no return value.
+@discardableResult
 public func effect(name: Tiny.EffectName, job: @escaping (Tiny.VoidEffect) async -> Void) -> Tiny.VoidEffect {
     let e = Tiny.VoidEffect(name: name, job: job)
     Tiny.globalStore.voidEffects[name] = e
@@ -37,11 +40,15 @@ public func useState<Value: Equatable>(name: Tiny.StateName) -> Tiny.State<Value
 public func useEffect<Value: Equatable>(name: Tiny.EffectName) -> Tiny.Effect<Value> {
     // safety not guaranteed
     // the effect for the name must be in the store.
-    return Tiny.globalStore.effects[name] as! Tiny.Effect<Value>
+    let e = Tiny.globalStore.effects[name] as! Tiny.Effect<Value>
+    e.didInitialRun = true
+    return e
 }
 
 public func useEffect(name: Tiny.EffectName) -> Tiny.VoidEffect {
     // safety not guaranteed
     // the effect for the name must be in the store.
-    return Tiny.globalStore.voidEffects[name] as! Tiny.VoidEffect
+    let e = Tiny.globalStore.voidEffects[name] as! Tiny.VoidEffect
+    e.didInitialRun = true
+    return e
 }

@@ -133,8 +133,10 @@ final class AsyncEnumTypeTests: XCTestCase {
             await TinyStoreTests.wait(secs: 2)
             count.commit { $0 = .error(value: SomeError.systemError(code: 1)) }
         }
-
+        
+        let _: Tiny.VoidEffect = useEffect(name: "CountEffect")
         XCTAssertEqual(countState.value, .idle)
+        
         await TinyStoreTests.wait(secs: 2)
         XCTAssertEqual(countState.value, .loading)
         await TinyStoreTests.wait(secs: 2)
