@@ -16,10 +16,12 @@ extension Tiny {
         private var name: Tiny.StoreName
         public init(name: Tiny.StoreName) {
             self.name = name
+            Tiny.scopeStores[name] = self
         }
         
         deinit {
             states.removeAll()
+            Tiny.scopeStores[name] = nil
         }
     }
 }
