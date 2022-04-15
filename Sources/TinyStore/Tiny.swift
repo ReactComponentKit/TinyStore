@@ -17,4 +17,5 @@ public enum Tiny {
         case store
     }
     public static var globalStore = ScopeStore(name: GlobalScope.store)
+    internal static var scopeStores: [Tiny.StoreName: ScopeStore] = [:]
 }
