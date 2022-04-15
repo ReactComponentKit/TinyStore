@@ -29,8 +29,8 @@ extension Tiny {
             self.job = job
         }
         
-        public func watch<Value: Equatable>(state name: AnyHashable) -> Tiny.State<Value> {
-            let state = globalStore.states[name] as! Tiny.State<Value>
+        public func watch<Value: Equatable>(state name: AnyHashable, store: Tiny.ScopeStore = Tiny.globalStore) -> Tiny.State<Value> {
+            let state = store.states[name] as! Tiny.State<Value>
             guard watchStates[state.name] == nil else { return state }
             watchStates[state.name] = true
             state.$value
