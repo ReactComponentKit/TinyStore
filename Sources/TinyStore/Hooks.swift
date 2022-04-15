@@ -7,6 +7,11 @@
 
 import Foundation
 
+@discardableResult
+public func store(name: Tiny.StoreName) -> Tiny.ScopeStore {
+    return Tiny.ScopeStore(name: name)
+}
+
 /// define state value
 @discardableResult
 public func state<Value: Equatable>(name: Tiny.StateName, initialValue: Value, store: Tiny.ScopeStore = Tiny.globalStore) -> Tiny.State<Value> {
@@ -29,6 +34,12 @@ public func effect(name: Tiny.EffectName, store: Tiny.ScopeStore = Tiny.globalSt
     let e = Tiny.VoidEffect(name: name, job: job)
     store.voidEffects[name] = e
     return e
+}
+
+public func useStore(name: Tiny.StoreName) -> Tiny.ScopeStore {
+    // does not guaranteed safety.
+    // the store for the name must be in the container.
+    return Tiny.scopeStores[name]!
 }
 
 public func useState<Value: Equatable>(name: Tiny.StateName) -> Tiny.State<Value> {
