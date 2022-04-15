@@ -73,7 +73,7 @@ public func useEffect(name: Tiny.EffectName) -> Tiny.VoidEffect {
     // the effect for the name must be in the store.
     for store in Tiny.scopeStores.values {
         if store.effects[name] != nil {
-            let e = store.effects[name] as! Tiny.VoidEffect
+            let e = store.voidEffects[name] as! Tiny.VoidEffect
             e.didInitialRun = true
             return e
         }
