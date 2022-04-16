@@ -21,15 +21,17 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		4EB06A9D280AA2B700180E0D /* ProperyWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB06A9C280AA2B700180E0D /* ProperyWrappers.swift */; };
+		4EB06AA0280AD82A00180E0D /* PropertyWrappersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB06A9E280AD7B000180E0D /* PropertyWrappersTests.swift */; };
 		4EC3ACE12809B08900187C15 /* ScopeStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3ACE02809B08900187C15 /* ScopeStoreTests.swift */; };
-		4EECC5632806F1C5001058B3 /* VoidEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECC5622806F1C5001058B3 /* VoidEffect.swift */; };
+		4EECC5632806F1C5001058B3 /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECC5622806F1C5001058B3 /* Effect.swift */; };
 		4EECC5652806F261001058B3 /* Hooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECC5642806F261001058B3 /* Hooks.swift */; };
 		4EECC5672806F742001058B3 /* ContextSwitching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECC5662806F742001058B3 /* ContextSwitching.swift */; };
 		4EECC5692806FCA1001058B3 /* TinyEffectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECC5682806FCA1001058B3 /* TinyEffectTests.swift */; };
 		4EECC56C2806FDBE001058B3 /* SimulateWait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECC56A2806FD71001058B3 /* SimulateWait.swift */; };
 		4EECC56E28070AF3001058B3 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECC56D28070AF3001058B3 /* Async.swift */; };
 		4EECC57028070B1D001058B3 /* AsyncEnumTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECC56F28070B1D001058B3 /* AsyncEnumTypeTests.swift */; };
-		OBJ_26 /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Effect.swift */; };
+		OBJ_26 /* EffectValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* EffectValue.swift */; };
 		OBJ_27 /* ScopeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* ScopeStore.swift */; };
 		OBJ_28 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* State.swift */; };
 		OBJ_29 /* Tiny.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Tiny.swift */; };
@@ -56,8 +58,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4EB06A9C280AA2B700180E0D /* ProperyWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProperyWrappers.swift; sourceTree = "<group>"; };
+		4EB06A9E280AD7B000180E0D /* PropertyWrappersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyWrappersTests.swift; sourceTree = "<group>"; };
 		4EC3ACE02809B08900187C15 /* ScopeStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScopeStoreTests.swift; sourceTree = "<group>"; };
-		4EECC5622806F1C5001058B3 /* VoidEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidEffect.swift; sourceTree = "<group>"; };
+		4EECC5622806F1C5001058B3 /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
 		4EECC5642806F261001058B3 /* Hooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hooks.swift; sourceTree = "<group>"; };
 		4EECC5662806F742001058B3 /* ContextSwitching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextSwitching.swift; sourceTree = "<group>"; };
 		4EECC5682806FCA1001058B3 /* TinyEffectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinyEffectTests.swift; sourceTree = "<group>"; };
@@ -71,7 +75,7 @@
 		OBJ_19 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		OBJ_20 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_9 /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
+		OBJ_9 /* EffectValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectValue.swift; sourceTree = "<group>"; };
 		"tinystore::TinyStore::Product" /* TinyStore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TinyStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"tinystore::TinyStoreTests::Product" /* TinyStoreTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = TinyStoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -112,6 +116,7 @@
 				4EECC5662806F742001058B3 /* ContextSwitching.swift */,
 				4EECC56A2806FD71001058B3 /* SimulateWait.swift */,
 				4EC3ACE02809B08900187C15 /* ScopeStoreTests.swift */,
+				4EB06A9E280AD7B000180E0D /* PropertyWrappersTests.swift */,
 			);
 			name = TinyStoreTests;
 			path = Tests/TinyStoreTests;
@@ -149,13 +154,14 @@
 		OBJ_8 /* TinyStore */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_9 /* Effect.swift */,
+				OBJ_12 /* Tiny.swift */,
+				OBJ_9 /* EffectValue.swift */,
 				4EECC56D28070AF3001058B3 /* Async.swift */,
 				4EECC5642806F261001058B3 /* Hooks.swift */,
-				4EECC5622806F1C5001058B3 /* VoidEffect.swift */,
+				4EECC5622806F1C5001058B3 /* Effect.swift */,
 				OBJ_10 /* ScopeStore.swift */,
 				OBJ_11 /* State.swift */,
-				OBJ_12 /* Tiny.swift */,
+				4EB06A9C280AA2B700180E0D /* ProperyWrappers.swift */,
 			);
 			name = TinyStore;
 			path = Sources/TinyStore;
@@ -245,12 +251,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				4EB06A9D280AA2B700180E0D /* ProperyWrappers.swift in Sources */,
 				4EECC5652806F261001058B3 /* Hooks.swift in Sources */,
-				OBJ_26 /* Effect.swift in Sources */,
+				OBJ_26 /* EffectValue.swift in Sources */,
 				OBJ_27 /* ScopeStore.swift in Sources */,
 				OBJ_28 /* State.swift in Sources */,
 				OBJ_29 /* Tiny.swift in Sources */,
-				4EECC5632806F1C5001058B3 /* VoidEffect.swift in Sources */,
+				4EECC5632806F1C5001058B3 /* Effect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +275,7 @@
 			files = (
 				4EC3ACE12809B08900187C15 /* ScopeStoreTests.swift in Sources */,
 				4EECC5672806F742001058B3 /* ContextSwitching.swift in Sources */,
+				4EB06AA0280AD82A00180E0D /* PropertyWrappersTests.swift in Sources */,
 				4EECC57028070B1D001058B3 /* AsyncEnumTypeTests.swift in Sources */,
 				4EECC5692806FCA1001058B3 /* TinyEffectTests.swift in Sources */,
 				4EECC56C2806FDBE001058B3 /* SimulateWait.swift in Sources */,

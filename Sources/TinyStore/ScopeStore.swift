@@ -6,13 +6,14 @@
 //  https://github.com/ReactComponentKit/TinyStore
 //
 
+import Foundation
+
 /// store states and effects
 extension Tiny {
     public class ScopeStore {
         internal var states = [Tiny.StateName: Any]()
+        internal var effectValues = [Tiny.EffectName: Any]()
         internal var effects = [Tiny.EffectName: Any]()
-        internal var voidEffects = [Tiny.EffectName: Any]()
-        
         private var name: Tiny.StoreName
         public init(name: Tiny.StoreName) {
             self.name = name
@@ -21,7 +22,8 @@ extension Tiny {
         
         deinit {
             states.removeAll()
-            Tiny.scopeStores[name] = nil
+            effectValues.removeAll()
+            effects.removeAll()
         }
     }
 }
