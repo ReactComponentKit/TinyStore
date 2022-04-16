@@ -8,6 +8,19 @@
 import Foundation
 
 @propertyWrapper
+public struct UseStore {
+    private var store: Tiny.ScopeStore
+    
+    public init(name: AnyHashable) {
+        self.store = useStore(name: name)
+    }
+    
+    public var wrappedValue: Tiny.ScopeStore {
+        return store
+    }
+}
+
+@propertyWrapper
 public struct UseState<Value: Equatable> {
     private var state: Tiny.State<Value>
     public init(name: AnyHashable) {

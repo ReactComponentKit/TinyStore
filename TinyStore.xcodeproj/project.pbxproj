@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		4EB06A9D280AA2B700180E0D /* ProperyWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB06A9C280AA2B700180E0D /* ProperyWrappers.swift */; };
+		4EB06AA0280AD82A00180E0D /* PropertyWrappersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB06A9E280AD7B000180E0D /* PropertyWrappersTests.swift */; };
 		4EC3ACE12809B08900187C15 /* ScopeStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC3ACE02809B08900187C15 /* ScopeStoreTests.swift */; };
 		4EECC5632806F1C5001058B3 /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECC5622806F1C5001058B3 /* Effect.swift */; };
 		4EECC5652806F261001058B3 /* Hooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECC5642806F261001058B3 /* Hooks.swift */; };
@@ -58,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		4EB06A9C280AA2B700180E0D /* ProperyWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProperyWrappers.swift; sourceTree = "<group>"; };
+		4EB06A9E280AD7B000180E0D /* PropertyWrappersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyWrappersTests.swift; sourceTree = "<group>"; };
 		4EC3ACE02809B08900187C15 /* ScopeStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScopeStoreTests.swift; sourceTree = "<group>"; };
 		4EECC5622806F1C5001058B3 /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
 		4EECC5642806F261001058B3 /* Hooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hooks.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				4EECC5662806F742001058B3 /* ContextSwitching.swift */,
 				4EECC56A2806FD71001058B3 /* SimulateWait.swift */,
 				4EC3ACE02809B08900187C15 /* ScopeStoreTests.swift */,
+				4EB06A9E280AD7B000180E0D /* PropertyWrappersTests.swift */,
 			);
 			name = TinyStoreTests;
 			path = Tests/TinyStoreTests;
@@ -272,6 +275,7 @@
 			files = (
 				4EC3ACE12809B08900187C15 /* ScopeStoreTests.swift in Sources */,
 				4EECC5672806F742001058B3 /* ContextSwitching.swift in Sources */,
+				4EB06AA0280AD82A00180E0D /* PropertyWrappersTests.swift in Sources */,
 				4EECC57028070B1D001058B3 /* AsyncEnumTypeTests.swift in Sources */,
 				4EECC5692806FCA1001058B3 /* TinyEffectTests.swift in Sources */,
 				4EECC56C2806FDBE001058B3 /* SimulateWait.swift in Sources */,

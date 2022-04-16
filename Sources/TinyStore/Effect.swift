@@ -42,6 +42,19 @@ extension Tiny {
             return state
         }
         
+        public func watch<Value: Equatable>(effectValue name: AnyHashable, store: Tiny.ScopeStore = Tiny.globalStore) -> Tiny.EffectValue<Value> {
+            let effectValue = store.effectValues[name] as! Tiny.EffectValue<Value>
+            guard watchStates[effectValue.name] == nil else { return effectValue }
+            watchStates[effectValue.name] = true
+            effectValue.$value
+                .removeDuplicates()
+                .sink { [weak self] value in
+                    self?.run()
+                }
+                .store(in: &cancellable)
+            return effectValue
+        }
+        
         public func run() {
             Task.detached(priority: .userInitiated) {
                 await self.job(self)
