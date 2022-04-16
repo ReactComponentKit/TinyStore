@@ -83,6 +83,7 @@ final class PropertyWrappersTests: XCTestCase {
         
         @UseEffectValue(name: TestStore.State.nameAndAge)
         var nameAndAge: Tiny.EffectValue<String>
+        XCTAssertEqual(nameAndAge.value, "")
         
         @UseEffect(name: TestStore.Effect.logging)
         var logging: Tiny.Effect
