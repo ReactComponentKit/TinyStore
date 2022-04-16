@@ -11,7 +11,7 @@ import Combine
 extension Tiny {
     public class Effect: ObservableObject {
         private var watchStates: [AnyHashable: Bool] = [:]
-        internal var cancellable = Set<AnyCancellable>()
+        internal var cancellables = Set<AnyCancellable>()
         internal let name: AnyHashable
         internal let job: (Effect) async -> Void
         private var cacheDidInitialRun = false
@@ -38,7 +38,7 @@ extension Tiny {
                 .sink { [weak self] value in
                     self?.run()
                 }
-                .store(in: &cancellable)
+                .store(in: &cancellables)
             return state
         }
         
@@ -51,7 +51,7 @@ extension Tiny {
                 .sink { [weak self] value in
                     self?.run()
                 }
-                .store(in: &cancellable)
+                .store(in: &cancellables)
             return effectValue
         }
         
