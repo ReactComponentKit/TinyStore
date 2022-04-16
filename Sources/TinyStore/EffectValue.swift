@@ -1,5 +1,5 @@
 //
-//  Effect.swift
+//  EffectValue.swift
 //  TinyStore
 //
 //  Created by sungcheol.kim on 2022/04/13.
