@@ -1,7 +1,7 @@
 import XCTest
 @testable import TinyStore
 
-final class TinyStateTsts: XCTestCase {
+final class TinyStateTests: XCTestCase {
     func testInitState() {
         let state = Tiny.State(name: "name", initialValue: "A")
         XCTAssertEqual(state.value, "A")

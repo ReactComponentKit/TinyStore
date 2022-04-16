@@ -22,16 +22,16 @@ public func state<Value: Equatable>(name: Tiny.StateName, initialValue: Value, s
 
 /// define effect that has return value
 @discardableResult
-public func effect<Value: Equatable>(name: Tiny.EffectName, initialValue: Value, store: Tiny.ScopeStore = Tiny.globalStore, job: @escaping (Tiny.Effect<Value>) async -> Value) -> Tiny.Effect<Value> {
-    let e = Tiny.Effect(name: name, initialValue: initialValue, job: job)
+public func effectValue<Value: Equatable>(name: Tiny.EffectName, initialValue: Value, store: Tiny.ScopeStore = Tiny.globalStore, job: @escaping (Tiny.EffectValue<Value>) async -> Value) -> Tiny.EffectValue<Value> {
+    let e = Tiny.EffectValue(name: name, initialValue: initialValue, job: job)
     store.effects[name] = e
     return e
 }
 
 /// define effect that has no return value.
 @discardableResult
-public func effect(name: Tiny.EffectName, store: Tiny.ScopeStore = Tiny.globalStore, job: @escaping (Tiny.VoidEffect) async -> Void) -> Tiny.VoidEffect {
-    let e = Tiny.VoidEffect(name: name, job: job)
+public func effect(name: Tiny.EffectName, store: Tiny.ScopeStore = Tiny.globalStore, job: @escaping (Tiny.Effect) async -> Void) -> Tiny.Effect {
+    let e = Tiny.Effect(name: name, job: job)
     store.voidEffects[name] = e
     return e
 }
@@ -53,32 +53,32 @@ public func useState<Value: Equatable>(name: Tiny.StateName) -> Tiny.State<Value
     return Tiny.globalStore.states[name] as! Tiny.State<Value>
 }
 
-public func useEffect<Value: Equatable>(name: Tiny.EffectName) -> Tiny.Effect<Value> {
+public func useEffectValue<Value: Equatable>(name: Tiny.EffectName) -> Tiny.EffectValue<Value> {
     // does not guaranteed safety.
     // the effect for the name must be in the store.
     for store in Tiny.scopeStores.values {
         if store.effects[name] != nil {
-            let e = store.effects[name] as! Tiny.Effect<Value>
+            let e = store.effects[name] as! Tiny.EffectValue<Value>
             e.didInitialRun = true
             return e
         }
     }
-    let e = Tiny.globalStore.effects[name] as! Tiny.Effect<Value>
+    let e = Tiny.globalStore.effects[name] as! Tiny.EffectValue<Value>
     e.didInitialRun = true
     return e
 }
 
-public func useEffect(name: Tiny.EffectName) -> Tiny.VoidEffect {
+public func useEffect(name: Tiny.EffectName) -> Tiny.Effect {
     // safety not guaranteed
     // the effect for the name must be in the store.
     for store in Tiny.scopeStores.values {
         if store.voidEffects[name] != nil {
-            let e = store.voidEffects[name] as! Tiny.VoidEffect
+            let e = store.voidEffects[name] as! Tiny.Effect
             e.didInitialRun = true
             return e
         }
     }
-    let e = Tiny.globalStore.voidEffects[name] as! Tiny.VoidEffect
+    let e = Tiny.globalStore.voidEffects[name] as! Tiny.Effect
     e.didInitialRun = true
     return e
 }

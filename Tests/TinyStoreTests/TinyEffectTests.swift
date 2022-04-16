@@ -14,14 +14,14 @@ func returnName() async -> String {
     return "TinyStore"
 }
 
-final class TinyEffectTsts: XCTestCase {
+final class TinyEffectTests: XCTestCase {
     func testInitEffect() async {
-        effect(name: "fetchName", initialValue: "") { effect in
+        effectValue(name: "fetchName", initialValue: "") { effect in
             let name = await returnName()
             return name
         }
         
-        let fetchName: Tiny.Effect<String> = useEffect(name: "fetchName")
+        let fetchName: Tiny.EffectValue<String> = useEffectValue(name: "fetchName")
         await TinyStoreTests.wait(secs: 3)
         XCTAssertEqual(fetchName.value, "TinyStore")
     }
@@ -33,13 +33,13 @@ final class TinyEffectTsts: XCTestCase {
         }
         
         let ageState = state(name: States.age, initialValue: 20)
-        effect(name: States.name, initialValue: "") { effect in
+        effectValue(name: States.name, initialValue: "") { effect in
             let age: Tiny.State<Int> = effect.watch(state: States.age)
             let name = await returnName()
             return "\(name) - \(age)"
         }
         
-        let nameEffect: Tiny.Effect<String> = useEffect(name: States.name)
+        let nameEffect: Tiny.EffectValue<String> = useEffectValue(name: States.name)
         await TinyStoreTests.wait(secs: 3)
         XCTAssertEqual(nameEffect.value, "TinyStore - 20")
         
@@ -72,14 +72,14 @@ final class TinyEffectTsts: XCTestCase {
             output.commit { $0 = result }
         }
         
-        effect(name: Effects.result, initialValue: 0) { effect in
+        effectValue(name: Effects.result, initialValue: 0) { effect in
             let output: Tiny.State<Int> = effect.watch(state: States.output)
             print(output)
             return output.value
         }
         
-        let _: Tiny.VoidEffect = useEffect(name: Effects.compute)
-        let outputEffect: Tiny.Effect<Int> = useEffect(name: Effects.result)
+        let _: Tiny.Effect = useEffect(name: Effects.compute)
+        let outputEffect: Tiny.EffectValue<Int> = useEffectValue(name: Effects.result)
                 
         aState.value = 10
         bState.value = 20
@@ -92,7 +92,7 @@ final class TinyEffectTsts: XCTestCase {
         bState.value = 900
         await TinyStoreTests.wait(secs: 3)
         
-        let resultEffect: Tiny.Effect<Int> = useEffect(name: Effects.result)
+        let resultEffect: Tiny.EffectValue<Int> = useEffectValue(name: Effects.result)
         XCTAssertEqual(resultEffect.value, 1000)
     }
 }
