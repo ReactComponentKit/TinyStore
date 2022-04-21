@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// PropertyWrappers only for UIKit
 @propertyWrapper
 public struct UseStore {
     private var store: Tiny.ScopeStore

@@ -59,5 +59,40 @@ extension Async: Equatable {
     public static func != <R>(lhs: Async<T>, rhs: Async<R>) -> Bool {
         return true
     }
+    
+    public var value: T? {
+        if case let .value(v) = self {
+            return v
+        }
+        return nil
+    }
+    
+    public var error: Error? {
+        if case let .error(e) = self {
+            return e
+        }
+        return nil
+    }
+    
+    public var isSuccess: Bool {
+        if case .value(_) = self {
+            return true
+        }
+        return false
+    }
+    
+    public var isFailed: Bool {
+        if case .error(_) = self {
+            return true
+        }
+        return false
+    }
+    
+    public var isLoading: Bool {
+        if case .loading = self {
+            return true
+        }
+        return false
+    }
 }
 // swiftlint:enable pattern_matching_keywords

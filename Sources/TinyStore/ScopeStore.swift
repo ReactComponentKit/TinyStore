@@ -15,9 +15,8 @@ extension Tiny {
         internal var effectValues = [Tiny.EffectName: Any]()
         internal var effects = [Tiny.EffectName: Any]()
         private var name: Tiny.StoreName
-        public init(name: Tiny.StoreName) {
+        internal init(name: Tiny.StoreName) {
             self.name = name
-            Tiny.scopeStores[name] = self
         }
         
         deinit {

@@ -155,10 +155,10 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_12 /* Tiny.swift */,
-				OBJ_9 /* EffectValue.swift */,
 				4EECC56D28070AF3001058B3 /* Async.swift */,
-				4EECC5642806F261001058B3 /* Hooks.swift */,
 				4EECC5622806F1C5001058B3 /* Effect.swift */,
+				OBJ_9 /* EffectValue.swift */,
+				4EECC5642806F261001058B3 /* Hooks.swift */,
 				OBJ_10 /* ScopeStore.swift */,
 				OBJ_11 /* State.swift */,
 				4EB06A9C280AA2B700180E0D /* ProperyWrappers.swift */,

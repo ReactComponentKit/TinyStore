@@ -8,6 +8,69 @@
 
 TinyStore is really small state management library for UIKit and SwiftUI. It catches ideas from [Recoil](https://recoiljs.org/)!
 
+## States
+
+You can define a state with `state()` function.
+
+```swift
+state(name: "name", initialValue: "burt")
+state(name: "age", initialValue: 20)
+```
+
+## Effects
+
+You can define a side effect with `effect()` function.
+
+```swift
+effect(name: "loggingName") { effect in 
+    let name: String = effect.watch(state: "name")
+    
+    // call logging api
+    await API.logging(name: name)
+}
+```
+
+effect can watch the changes of the State of EffectValue.
+
+## EffectValue: Compose them!
+
+Composing states is very important! You can compose States and EffectValues with EffectValue.
+
+```swift
+effectValue(name: "nameAge", initailValue: "") { effect in 
+    let name: String = effect.watch(state: "name")
+    let age: Int = effect.watch(state: "age")
+    return "\(name)-\(age)"
+}
+```
+
+There are more [examples](https://github.com/ReactComponentKit/TinyStoreExamples)
+
+## ScopeStore
+
+TinyStore use Tiny.globalStore as default store. But you can define your ScopeStore where you want. For example, you can define SomeViewController's scope store.
+
+```swift
+class SomeViewController: UIViewController {
+    init() {
+        var store = store(name: "mystore")
+        state(name: "A", initialValue: 100, store: store)
+        state(name: "B", initialValue: "Hello", store: store)
+    }
+    
+    weak var collectionView: UICollectionView!
+    ...
+}
+
+class MyCollectionViewCell: UICollectionViewCell {
+    @UseState("A")
+    var a: Tiny.State<Int>
+    
+    @UseState("B")
+    var b: Tiny.State<String>
+}
+```
+
 
 ## MIT License
 
