@@ -10,6 +10,7 @@ import Foundation
 @discardableResult
 public func store(name: Tiny.StoreName) -> Tiny.ScopeStore {
     let store = Tiny.ScopeStore(name: name)
+    Tiny.scopeStores[name] = store
     return store
 }
 
