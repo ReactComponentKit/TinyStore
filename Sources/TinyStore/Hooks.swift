@@ -1,5 +1,5 @@
 //
-//  DefineFuncs.swift
+//  Hooks.swift
 //  TinyStore
 //
 //  Created by burt on 2022/04/13.
