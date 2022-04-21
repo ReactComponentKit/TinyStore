@@ -27,14 +27,14 @@ struct TestStore {
         state(name: State.age, initialValue: 20, store: testStore)
         effectValue(name: State.nameAndAge, initialValue: "", store: testStore) { effect in
             let store = useStore(name: TestStore.name)
-            let name: Tiny.State<String> = effect.watch(state: TestStore.State.name, store: store)
-            let age: Tiny.State<Int> = effect.watch(state: TestStore.State.age, store: store)
-            return "\(name.value)-\(age.value)"
+            let name: String = effect.watch(state: TestStore.State.name, store: store)
+            let age: Int = effect.watch(state: TestStore.State.age, store: store)
+            return "\(name)-\(age)"
         }
         effect(name: Effect.logging, store: testStore) { effect in
             let store = useStore(name: TestStore.name)
-            let nameAndAge: Tiny.EffectValue<String> = effect.watch(effectValue: TestStore.State.nameAndAge, store: store)
-            print(nameAndAge.value)
+            let nameAndAge: String = effect.watch(effectValue: TestStore.State.nameAndAge, store: store)
+            print(nameAndAge)
         }
     }
 }

@@ -34,7 +34,7 @@ final class TinyEffectTests: XCTestCase {
         
         let ageState = state(name: States.age, initialValue: 20)
         effectValue(name: States.name, initialValue: "") { effect in
-            let age: Tiny.State<Int> = effect.watch(state: States.age)
+            let age: Int = effect.watch(state: States.age)
             let name = await returnName()
             return "\(name) - \(age)"
         }
@@ -65,17 +65,17 @@ final class TinyEffectTests: XCTestCase {
         state(name: States.output, initialValue: 0)
         
         effect(name: Effects.compute) { effect in
-            let a: Tiny.State<Int> = effect.watch(state: States.inputA)
-            let b: Tiny.State<Int> = effect.watch(state: States.inputB)
+            let a: Int = effect.watch(state: States.inputA)
+            let b: Int = effect.watch(state: States.inputB)
             let output: Tiny.State<Int> = useState(name: States.output)
-            let result = a.value + b.value
+            let result = a + b
             output.commit { $0 = result }
         }
         
         effectValue(name: Effects.result, initialValue: 0) { effect in
-            let output: Tiny.State<Int> = effect.watch(state: States.output)
+            let output: Int = effect.watch(state: States.output)
             print(output)
-            return output.value
+            return output
         }
         
         let _: Tiny.Effect = useEffect(name: Effects.compute)
