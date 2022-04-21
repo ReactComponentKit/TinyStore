@@ -144,4 +144,31 @@ final class AsyncEnumTypeTests: XCTestCase {
         await TinyStoreTests.wait(secs: 2)
         XCTAssertEqual(countState.value, .error(value: SomeError.systemError(code: 1)))
     }
+    
+    func testValueProperty() {
+        let a: Async<Int> = .value(value: 99)
+        XCTAssertNotNil(a.value)
+        XCTAssertEqual(a.value, 99)
+    }
+    
+    func testIsSuccessProperty() {
+        let a: Async<Int> = .value(value: 99)
+        XCTAssertTrue(a.isSuccess)
+        XCTAssertFalse(a.isFailed)
+    }
+    
+    func testIsFailedProperty() {
+        let a: Async<String> = .error(value: SomeError.unknownError)
+        XCTAssertFalse(a.isSuccess)
+        XCTAssertTrue(a.isFailed)
+        
+        let b: Async<String> = .error(value: nil)
+        XCTAssertFalse(b.isSuccess)
+        XCTAssertTrue(b.isFailed)
+    }
+    
+    func testIsLoadingProperty() {
+        let a: Async<Int> = .loading
+        XCTAssertTrue(a.isLoading)
+    }
 }
