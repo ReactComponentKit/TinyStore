@@ -29,9 +29,9 @@ extension Tiny {
             self.job = job
         }
         
-        public func watch<Value: Equatable>(state name: AnyHashable, store: Tiny.ScopeStore = Tiny.globalStore) -> Tiny.State<Value> {
+        public func watch<Value: Equatable>(state name: AnyHashable, store: Tiny.ScopeStore = Tiny.globalStore) -> Value {
             let state = store.states[name] as! Tiny.State<Value>
-            guard watchStates[state.name] == nil else { return state }
+            guard watchStates[state.name] == nil else { return state.value }
             watchStates[state.name] = true
             state.$value
                 .removeDuplicates()
@@ -39,12 +39,12 @@ extension Tiny {
                     self?.run()
                 }
                 .store(in: &cancellables)
-            return state
+            return state.value
         }
         
-        public func watch<Value: Equatable>(effectValue name: AnyHashable, store: Tiny.ScopeStore = Tiny.globalStore) -> Tiny.EffectValue<Value> {
+        public func watch<Value: Equatable>(effectValue name: AnyHashable, store: Tiny.ScopeStore = Tiny.globalStore) -> Value {
             let effectValue = store.effectValues[name] as! Tiny.EffectValue<Value>
-            guard watchStates[effectValue.name] == nil else { return effectValue }
+            guard watchStates[effectValue.name] == nil else { return effectValue.value }
             watchStates[effectValue.name] = true
             effectValue.$value
                 .removeDuplicates()
@@ -52,7 +52,7 @@ extension Tiny {
                     self?.run()
                 }
                 .store(in: &cancellables)
-            return effectValue
+            return effectValue.value
         }
         
         public func run() {
